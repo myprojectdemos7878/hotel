@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Food Ordering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #666;
+            --background: #fafafa;
+            --surface: #ffffff;
+            --border: #e0e0e0;
+            --accent: #2563eb;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: var(--surface);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            margin-bottom: 32px;
+        }
+        
+        .logo-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary);
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: var(--secondary);
+            font-size: 16px;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+            background: var(--surface);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+        }
+        
+        select:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background: #2d2d2d;
+            transform: translateY(-1px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+        
+        .btn:active::after {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .admin-link {
+            margin-top: 24px;
+            text-align: center;
+        }
+        
+        .admin-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .admin-link a:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 24px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </div>
+            <div class="logo-text">Grand Hotel</div>
+        </div>
+        
+        <div class="subtitle">Select your table to begin ordering</div>
+        
+        <form id="tableForm">
+            <div class="form-group">
+                <label for="tableNumber">Table Number</label>
+                <select id="tableNumber" required>
+                    <option value="">Choose your table</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
+            <button type="submit" class="btn">
+                Start Ordering
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 8px; display: inline-block; vertical-align: -2px;">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </form>
+        
+        <div class="admin-link">
+            <a href="/admin">Admin Access</a>
+        </div>
+    </div>
+
+    <script>
+        // Populate table options (1-20)
+        const tableSelect = document.getElementById('tableNumber');
+        for (let i = 1; i <= 20; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `Table ${i}`;
+            tableSelect.appendChild(option);
+        }
+        
+        // Handle form submission
+        document.getElementById('tableForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const tableNumber = document.getElementById('tableNumber').value;
+            if (tableNumber) {
+                // Check if table is available
+                try {
+                    const response = await fetch(`/table/status?table=${tableNumber}`);
+                    const tableStatus = await response.json();
+                    
+                    if (tableStatus.status === 'closed' || tableStatus.status === 'empty') {
+                        // Store table number in sessionStorage
+                        sessionStorage.setItem('currentTable', tableNumber);
+                        // Redirect to menu page
+                        window.location.href = '/menu';
+                    } else {
+                        alert(`Table ${tableNumber} is currently occupied. Please select another table.`);
+                    }
+                } catch (error) {
+                    console.error('Error checking table status:', error);
+                    // Store table number and proceed anyway
+                    sessionStorage.setItem('currentTable', tableNumber);
+                    window.location.href = '/menu';
+                }
+            }
+        });
+        
+        // Check if there's a table number in sessionStorage
+        const currentTable = sessionStorage.getItem('currentTable');
+        if (currentTable) {
+            tableSelect.value = currentTable;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "table": 11,
+  "status": "bill_pending",
+  "items": [
+    {
+      "id": 7,
+      "name": "Chicken Biryani",
+      "price": 250,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 8,
+      "name": "Veg Biryani",
+      "price": 180,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 13,
+      "name": "Laccha Paratha",
+      "price": 70,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 5,
+      "name": "Mutton Rogan Josh",
+      "price": 420,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 17,
+      "name": "Lassi",
+      "price": 80,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "total": 1000,
+  "active": true
+}

@@ -1,0 +1,22 @@
+{
+  "table": 12,
+  "status": "bill_pending",
+  "items": [
+    {
+      "id": 4,
+      "name": "Palak Paneer",
+      "price": 260,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 5,
+      "name": "Mutton Rogan Josh",
+      "price": 420,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "total": 680,
+  "active": true
+}

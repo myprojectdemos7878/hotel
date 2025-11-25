@@ -1,0 +1,54 @@
+{
+  "id": "HTL-11-20251125-1324",
+  "table": 11,
+  "date": "2025-11-25T00:43:36.365Z",
+  "items": [
+    {
+      "id": 1,
+      "name": "Butter Chicken",
+      "price": 320,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 2,
+      "name": "Paneer Butter Masala",
+      "price": 280,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 3,
+      "name": "Chicken Tikka Masala",
+      "price": 350,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 8,
+      "name": "Veg Biryani",
+      "price": 180,
+      "quantity": 2,
+      "status": "ordered"
+    },
+    {
+      "id": 9,
+      "name": "Mutton Biryani",
+      "price": 320,
+      "quantity": 2,
+      "status": "ordered"
+    },
+    {
+      "id": 10,
+      "name": "Jeera Rice",
+      "price": 120,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "subtotal": 2070,
+  "discount": 10,
+  "total": 2060,
+  "discountType": "flat",
+  "discountValue": "10"
+}

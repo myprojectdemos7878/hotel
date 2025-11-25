@@ -1,0 +1,43 @@
+{
+  "table": 10,
+  "status": "bill_pending",
+  "items": [
+    {
+      "id": 2,
+      "name": "Paneer Butter Masala",
+      "price": 280,
+      "quantity": 2,
+      "status": "ordered"
+    },
+    {
+      "id": 1,
+      "name": "Butter Chicken",
+      "price": 320,
+      "quantity": 7,
+      "status": "ordered"
+    },
+    {
+      "id": 3,
+      "name": "Chicken Tikka Masala",
+      "price": 350,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 6,
+      "name": "Fish Curry",
+      "price": 380,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 13,
+      "name": "Laccha Paratha",
+      "price": 70,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "total": 3600,
+  "active": true
+}

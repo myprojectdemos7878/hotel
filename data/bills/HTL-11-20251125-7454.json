@@ -1,0 +1,47 @@
+{
+  "id": "HTL-11-20251125-7454",
+  "table": 11,
+  "date": "2025-11-25T01:11:44.415Z",
+  "items": [
+    {
+      "id": 7,
+      "name": "Chicken Biryani",
+      "price": 250,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 8,
+      "name": "Veg Biryani",
+      "price": 180,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 13,
+      "name": "Laccha Paratha",
+      "price": 70,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 5,
+      "name": "Mutton Rogan Josh",
+      "price": 420,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 17,
+      "name": "Lassi",
+      "price": 80,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "subtotal": 1000,
+  "discount": 0,
+  "total": 1000,
+  "discountType": null,
+  "discountValue": null
+}

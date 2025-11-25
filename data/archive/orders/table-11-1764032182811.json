@@ -1,0 +1,15 @@
+{
+  "table": 11,
+  "status": "bill_pending",
+  "items": [
+    {
+      "id": 2,
+      "name": "Paneer Butter Masala",
+      "price": 280,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "total": 280,
+  "active": true
+}

@@ -1,0 +1,50 @@
+{
+  "table": 11,
+  "status": "bill_pending",
+  "items": [
+    {
+      "id": 1,
+      "name": "Butter Chicken",
+      "price": 320,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 2,
+      "name": "Paneer Butter Masala",
+      "price": 280,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 3,
+      "name": "Chicken Tikka Masala",
+      "price": 350,
+      "quantity": 1,
+      "status": "ordered"
+    },
+    {
+      "id": 8,
+      "name": "Veg Biryani",
+      "price": 180,
+      "quantity": 2,
+      "status": "ordered"
+    },
+    {
+      "id": 9,
+      "name": "Mutton Biryani",
+      "price": 320,
+      "quantity": 2,
+      "status": "ordered"
+    },
+    {
+      "id": 10,
+      "name": "Jeera Rice",
+      "price": 120,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "total": 2070,
+  "active": true
+}

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order - Grand Hotel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        
+        :root {
+            --paper: #fefefe;
+            --ink: #1a1a1a;
+            --border: #d4d4d4;
+            --accent: #2c2c2c;
+            --highlight: #f0f0f0;
+            --success: #4a4a4a;
+        }
+        
+        body {
+            background: #f5f5f5;
+            color: var(--ink);
+            line-height: 1.4;
+        }
+        
+        .customer-header {
+            background: var(--paper);
+            border-bottom: 2px solid var(--ink);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .table-info {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: var(--paper);
+            color: var(--ink);
+            border: 1px solid var(--ink);
+            padding: 0.5rem 1rem;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        
+        .page-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+        
+        .order-status {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--ink);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-message {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .section-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--highlight);
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        
+        .section-content {
+            padding: 1.5rem;
+        }
+        
+        .order-items {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .order-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            font-weight: bold;
+        }
+        
+        .item-quantity, .item-price, .item-total {
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .order-summary {
+            background: var(--highlight);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-total {
+            font-size: 1.25rem;
+            font-weight: bold;
+            border-top: 2px solid var(--ink);
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--ink);
+            background: var(--paper);
+            color: var(--ink);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.2s;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .btn:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+        
+        .btn-primary {
+            background: var(--ink);
+            color: var(--paper);
+        }
+        
+        .btn-primary:hover {
+            background: var(--paper);
+            color: var(--ink);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--ink);
+            opacity: 0.7;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--ink);
+        }
+        
+        .bill-section {
+            background: var(--paper);
+            border: 2px solid var(--ink);
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .bill-section.visible {
+            display: block;
+        }
+        
+        .bill-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        
+        .bill-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bill-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        
+        .notification {
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .notification.visible {
+            display: block;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .order-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .status-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .nav-buttons {
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .bill-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-btn {
+                text-align: center;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="customer-header">
+        <div class="header-content">
+            <div class="logo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Grand Hotel
+            </div>
+            <div class="table-info">Table <span id="tableNumberHeader">-</span></div>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="location.href='/'">Change Table</button>
+                <button class="nav-btn" onclick="location.href='/menu'">Add More Items</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1 class="page-title">Your Order</h1>
+        
+        <div class="notification" id="notification">
+            <!-- Notification messages will appear here -->
+        </div>
+        
+        <div class="order-status" id="orderStatus">
+            <div class="status-header">
+                <div class="status-badge" id="statusBadge">Ordering</div>
+                <div class="status-message" id="statusMessage">You can still add items to your order</div>
+            </div>
+            <div id="orderInstructions">
+                Your order has been received and will be prepared shortly.
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Current Order Items</h2>
+            </div>
+            <div class="section-content">
+                <div class="order-items" id="currentOrderItems">
+                    <div class="loading">Loading current order...</div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="orderSubtotal">₹0.00</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total Amount:</span>
+                        <span id="orderTotal">₹0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="/menu" class="btn">Add More Items</a>
+            <button class="btn btn-primary" onclick="requestBill()" id="requestBillBtn">Request Bill</button>
+            <button class="btn" onclick="viewGeneratedBill()" id="viewBillBtn" style="display: none;">View Generated Bill</button>
+        </div>
+        
+        <div class="bill-section" id="billSection">
+            <div class="bill-header">
+                <div class="bill-title">Your Bill</div>
+                <div>Thank you for dining with us!</div>
+            </div>
+            <div class="order-items" id="billItems">
+                <!-- Bill items will be populated here -->
+            </div>
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="billSubtotal">₹0.00</span>
+                </div>
+                <div class="summary-row" id="billDiscountRow" style="display: none;">
+                    <span>Discount:</span>
+                    <span id="billDiscount">₹0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total Amount:</span>
+                    <span id="billTotal">₹0.00</span>
+                </div>
+            </div>
+            <div class="bill-actions">
+                <button class="btn btn-primary" onclick="printBill()">Print Bill</button>
+                <button class="btn" onclick="closeBill()">Close Bill</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTable = sessionStorage.getItem('currentTable');
+        let currentOrder = {};
+        let latestBill = null;
+        
+        if (!currentTable) {
+            window.location.href = '/';
+        }
+        
+        // Set table number in the header
+        document.getElementById('tableNumberHeader').textContent = currentTable;
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification visible ${type}`;
+            setTimeout(() => {
+                notification.classList.remove('visible');
+            }, 5000);
+        }
+        
+        // Fetch current order
+        async function fetchCurrentOrder() {
+            try {
+                const response = await fetch(`/api/order?table=${currentTable}`);
+                if (!response.ok) throw new Error('Failed to fetch order');
+                
+                currentOrder = await response.json();
+                displayCurrentOrder();
+                checkForBill();
+            } catch (error) {
+                console.error('Error fetching order:', error);
+                document.getElementById('currentOrderItems').innerHTML = 
+                    '<div class="empty-state">Failed to load order details</div>';
+            }
+        }
+        
+        // Display current order
+        function displayCurrentOrder() {
+            const container = document.getElementById('currentOrderItems');
+            
+            if (!currentOrder.items || currentOrder.items.length === 0) {
+                container.innerHTML = '<div class="empty-state">No items in current order</div>';
+                document.getElementById('orderSubtotal').textContent = '₹0.00';
+                document.getElementById('orderTotal').textContent = '₹0.00';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let subtotal = 0;
+            
+            currentOrder.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHTML += `
+                    <div class="order-item">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-quantity">× ${item.quantity}</div>
+                        <div class="item-price">₹${item.price}</div>
+                        <div class="item-total">₹${itemTotal.toFixed(2)}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = itemsHTML;
+            document.getElementById('orderSubtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.getElementById('orderTotal').textContent = `₹${subtotal.toFixed(2)}`;
+            
+            // Update order status
+            updateOrderStatus();
+        }
+        
+        // Update order status display
+        function updateOrderStatus() {
+            const statusBadge = document.getElementById('statusBadge');
+            const statusMessage = document.getElementById('statusMessage');
+            const instructions = document.getElementById('orderInstructions');
+            const requestBillBtn = document.getElementById('requestBillBtn');
+            const viewBillBtn = document.getElementById('viewBillBtn');
+            
+            if (!currentOrder.status || currentOrder.status === 'empty') {
+                statusBadge.textContent = 'No Order';
+                statusMessage.textContent = 'You haven\'t placed any order yet';
+                instructions.textContent = 'Add items from the menu to place your order.';
+                requestBillBtn.style.display = 'none';
+                viewBillBtn.style.display = 'none';
+            } else {
+                switch (currentOrder.status) {
+                    case 'ordering':
+                        statusBadge.textContent = 'Ordering';
+                        statusMessage.textContent = 'You can still add items to your order';
+                        instructions.textContent = 'Your order is being prepared. You can add more items if needed.';
+                        requestBillBtn.style.display = 'block';
+                        viewBillBtn.style.display = 'none';
+                        break;
+                    case 'eating':
+                        statusBadge.textContent = 'In Progress';
+                        statusMessage.textContent = 'Your order is being prepared';
+                        instructions.textContent = 'Your food is being cooked and will be served shortly.';
+                        requestBillBtn.style.display = 'block';
+                        viewBillBtn.style.display = 'none';
+                        break;
+                    case 'bill_pending':
+                        statusBadge.textContent = 'Bill Pending';
+                        statusMessage.textContent = 'Your bill is being prepared';
+                        instructions.textContent = 'Your bill is being generated. Please wait a moment.';
+                        requestBillBtn.style.display = 'none';
+                        viewBillBtn.style.display = 'none';
+                        break;
+                    case 'closed':
+                        statusBadge.textContent = 'Completed';
+                        statusMessage.textContent = 'Your order has been completed';
+                        instructions.textContent = 'Thank you for dining with us! Your bill is ready.';
+                        requestBillBtn.style.display = 'none';
+                        viewBillBtn.style.display = 'block';
+                        break;
+                }
+            }
+        }
+        
+        // Check for available bill
+        async function checkForBill() {
+            try {
+                const response = await fetch(`/api/bill?table=${currentTable}`);
+                if (response.ok) {
+                    latestBill = await response.json();
+                    // Auto-show bill if available and table is closed
+                    if (currentOrder.status === 'closed' && latestBill) {
+                        showGeneratedBill();
+                    }
+                }
+            } catch (error) {
+                console.log('No bill available yet');
+            }
+        }
+        
+        // Request bill
+        async function requestBill() {
+            if (!currentOrder.items || currentOrder.items.length === 0) {
+                showNotification('No items in your order to generate bill', 'error');
+                return;
+            }
+            
+            try {
+                // Update table status to bill_pending
+                const response = await fetch('/api/table/set-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        table: parseInt(currentTable),
+                        status: 'bill_pending'
+                    })
+                });
+                
+                if (response.ok) {
+                    showNotification('Bill request sent to admin. Your bill will be generated shortly.', 'success');
+                    fetchCurrentOrder(); // Refresh order status
+                } else {
+                    showNotification('Failed to request bill. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error('Error requesting bill:', error);
+                showNotification('Failed to request bill. Please try again.', 'error');
+            }
+        }
+        
+        // View generated bill
+        async function viewGeneratedBill() {
+            if (latestBill) {
+                showGeneratedBill();
+            } else {
+                await checkForBill();
+                if (latestBill) {
+                    showGeneratedBill();
+                } else {
+                    showNotification('No bill available yet. Please wait for admin to generate your bill.', 'error');
+                }
+            }
+        }
+        
+        // Show generated bill
+        function showGeneratedBill() {
+            if (!latestBill) return;
+            
+            const billSection = document.getElementById('billSection');
+            const billItems = document.getElementById('billItems');
+            
+            let itemsHTML = '';
+            latestBill.items.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                itemsHTML += `
+                    <div class="order-item">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-quantity">× ${item.quantity}</div>
+                        <div class="item-price">₹${item.price}</div>
+                        <div class="item-total">₹${itemTotal.toFixed(2)}</div>
+                    </div>
+                `;
+            });
+            
+            billItems.innerHTML = itemsHTML;
+            document.getElementById('billSubtotal').textContent = `₹${latestBill.subtotal.toFixed(2)}`;
+            
+            // Show discount if applicable
+            if (latestBill.discount > 0) {
+                document.getElementById('billDiscountRow').style.display = 'flex';
+                document.getElementById('billDiscount').textContent = `-₹${latestBill.discount.toFixed(2)}`;
+            } else {
+                document.getElementById('billDiscountRow').style.display = 'none';
+            }
+            
+            document.getElementById('billTotal').textContent = `₹${latestBill.total.toFixed(2)}`;
+            
+            billSection.classList.add('visible');
+            showNotification('Your bill is ready! You can print it or view it anytime.', 'success');
+        }
+        
+        // Print bill
+        function printBill() {
+            if (latestBill && latestBill.id) {
+                window.open(`/bill/view?id=${latestBill.id}`, '_blank');
+            }
+        }
+        
+        // Close bill
+        function closeBill() {
+            document.getElementById('billSection').classList.remove('visible');
+        }
+        
+        // Auto-refresh order status
+        function startAutoRefresh() {
+            setInterval(fetchCurrentOrder, 5000); // Refresh every 5 seconds
+        }
+        
+        // Initialize
+        window.addEventListener('load', function() {
+            fetchCurrentOrder();
+            startAutoRefresh();
+        });
+    </script>
+</body>
+</html>

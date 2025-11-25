@@ -1,0 +1,20 @@
+{
+  "name": "hotel-food-ordering",
+  "version": "1.0.0",
+  "description": "Hotel Food Ordering System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "keywords": [
+    "hotel",
+    "food",
+    "ordering"
+  ],
+  "author": "",
+  "license": "MIT"
+}

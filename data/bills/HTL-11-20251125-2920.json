@@ -1,0 +1,19 @@
+{
+  "id": "HTL-11-20251125-2920",
+  "table": 11,
+  "date": "2025-11-25T00:56:22.811Z",
+  "items": [
+    {
+      "id": 2,
+      "name": "Paneer Butter Masala",
+      "price": 280,
+      "quantity": 1,
+      "status": "ordered"
+    }
+  ],
+  "subtotal": 280,
+  "discount": 0,
+  "total": 280,
+  "discountType": null,
+  "discountValue": null
+}
